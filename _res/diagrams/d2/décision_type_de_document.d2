@@ -1,0 +1,69 @@
+title: |md
+  # Prise de décision: Quel type de document?
+| {near: top-center}
+
+user: lecteur·rice { shape: person }
+archived: 🗃️ document archivé {
+	shape: page
+	tooltip: |
+🗃️ Documents archivés
+• Documentation Projet (date de fin de projet dépassée)
+• Compte-Rendus de réunions
+• Ateliers
+• Etudes
+• Analyses
+• Brouillons délaissés
+• etc. |
+}
+
+maintained: 🧹 document maintenu { shape: page }
+reference: ℹ️ informations {
+	shape: page
+	tooltip: |
+ℹ️ Informations
+• Documentation projet (projet en cours ou à venir)
+• Localisation du code source
+• Hyperliens vers les applications déployées
+• etc. |
+}
+
+explanations: 💭 discussions {
+	shape: page
+	tooltip: |
+💭 Discussions
+• Pistes d'évolution pour le futur
+• Log des décisions d'architecture
+• Alternatives considérées durant une prise de décision
+• etc. |
+}
+howto: 📖 tutoriels {
+	shape: page
+	tooltip: |
+📖 Tutoriels
+• Comment créer un formulaire web
+• Comment tracer un ensemble de données tridimensionnelles
+• Comment activer l'authentification LDAP
+• etc. |
+}
+tutorial: 🚀 premiers pas {
+	shape: page
+	tooltip: |
+🚀 Premiers pas
+• Scénario fonctionnel minimal
+• Installation du poste de développement
+• etc. |
+}
+
+questionArchive: Vérité du document? { shape: diamond }
+questionRegistre: Type de document? { shape: diamond }
+questionPilotage: Besoin du lecteur? { shape: diamond }
+
+user -> questionArchive
+questionArchive -> maintained: doit être toujours vraie
+questionArchive -> archived: vraie à une date donnée
+maintained -> questionRegistre
+questionRegistre -> reference: Description sèche de l'existant\nou\ndocumentation projet (projet en cours)
+questionRegistre -> explanations: Justification,\nDiscussion,\nIntrospection
+questionRegistre -> questionPilotage: Série\nd'instructions
+questionPilotage -> howto: Accomplir une tâche
+questionPilotage -> tutorial: Découvrir le sujet
